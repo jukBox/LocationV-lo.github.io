@@ -1,0 +1,59 @@
+@media all and (max-device-width: 750px) {
+    h1 {
+        font-size: 2em;
+    }
+    .logo1,
+    .logo2 {
+        display: none;
+    }
+    #slideshow,
+    .container {
+        width: 100%;
+        border: none;
+    }
+    img {
+        height: auto;
+        width: 373px;
+    }
+    .deco {
+        padding: 0;
+    }
+    #map {
+        width: 67em;
+        height: 40em;
+        position: absolute;
+        margin: 0;
+    }
+    .responsiveAside {
+        display: flex;
+        flex-direction: column;
+        width: 18em;
+        position: relative;
+        top: 1em;
+    }
+    #aside {
+        position: relative;
+        top: 30em;
+        width: 47em;
+    }
+    .canvas_block {
+        bottom: 16em;
+    }
+    #redCross {
+        left: 54em;
+    }
+    #windowReservation {
+        left: 0;
+        width: 47em;
+        top: 66em;
+    }
+    #cancelReservation {
+        left: 35%;
+    }
+    .btns {
+        left: 6em;
+    }
+    footer {
+        top: 55em;
+    }
+}

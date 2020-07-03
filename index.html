@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/smartphone.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+
+    <!-- LIBRAIRE -->
+    <script src="https://kit.fontawesome.com/e0a08b6ff2.js"></script>
+
+    <!-- CARTE CSS -->
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+    <link type="text/css" rel="stylesheet" href="Leaflet/dist/MarkerCluster.css" />
+    <link type="text/css" rel="stylesheet" href="Leaflet/dist/MarkerCluster.Default.css" />
+
+    <title>Carte interactive</title>
+</head>
+
+<body>
+    <div class="titre">
+        <h1>Location de vélos</h1>
+        <p class="ecolo"><i class="fab fa-envira f1"></i>Penser écolo<i class="fab fa-envira f2"></i></p>
+        <p class="warning">Site non officiel, ceci est un projet d'étude</p>
+    </div>
+
+    <div class="logo">
+        <div class="logoFlex">
+            <img class="logo1" src="assets/images/logo_velo.gif" alt="logo vélo">
+            <img class="logo2" src="assets/images/logo_velo.gif" alt="logo vélo">
+        </div>
+
+        <div class="deco">
+
+            <div id="slideshow">
+
+                <div class="container">
+                    <div class="slider">
+                        <figure>
+                            <img id="img" src="assets/images/1.png" alt="Image 1" />
+                            <figcaption>
+                                <h3 id="comment">Comment réserver? Regardez le tuto en images ici!</h3>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leftNright">
+                <button id="left"><i class="fas fa-angle-left"></i></button>
+                <button id="right"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+
+        <div class="positionPlayNpause">
+            <div class="playNpause">
+                <button id="pause" class="play_commands">Pause</button>
+                <button id="play" class="play_commands">Play</button>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="carte">
+
+        <div id="resDiv">
+            <span id="popupRes"></span><button id="popupResOk" type="button">OK</button>
+        </div>
+        <div id="map"></div>
+
+        <aside id="aside">
+
+            <div id="windowPopup">
+
+                <button id="greenCross" type="button">X</button>
+                <h2><span id="status"></span></h2>
+                <div class="coordGroup">
+                    <p class="numNname color">N° et Nom :&nbsp;<span id="name"></span></p>
+                    <p class="address color">Adresse :&nbsp;<span id="address"></span></p>
+                    <div class="velo">
+                        <p class="velo1 color"><span id="available_bikes"></span>&nbsp;vélos disponibles</p>
+                        <p class="velo1 color"><span id="available_bike_stands"></span>&nbsp;places vides</p>
+                    </div>
+                </div>
+
+                <form action="#" id="form" class="formBlock">
+
+                    <div class="formGroupe">
+                        <input type="text" id="nom" placeholder="Nom" required maxlength="16">
+                    </div>
+                    <div class="formGroupe">
+                        <input type="text" id="prenom" placeholder="Prénom" required minlength="3" maxlength="16">
+                    </div>
+                    <div class="formGroupe">
+                        <button type="button" id="btnRes">Réserver</button>
+                    </div>
+                    <div class="liensForm">
+                        <button type="button" id="lienRes">Votre réservation</button>
+                        <a href="">Mot de passe perdu ?</a>
+                    </div>
+                </form>
+
+                <div id="canvasWindow" class="canvas_block ">
+
+                    <button id="redCross" type="button">X</button>
+                    <canvas id="canvas" width="360" height="150"></canvas>
+                    <canvas id="canvasEmpty" width="360" height="150"></canvas>
+
+                    <div class="btns">
+                        <button id="eraseCanvas">Effacer</button>
+                        <button id="validCanvas">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div id="windowReservation">
+
+            <button id="greenCrossRes" type="button">X</button>
+            <h4><i class="fab fa-envira f1"></i>Réservation effectué<i class="fab fa-envira f2"></i></h4>
+            <p id="bikeValid"><span id="velo"></span>&nbsp;vélo réservé</p>
+            <p><span id="nomForm"></span>&nbsp;<span id="prenomForm"></span></p>
+            <p>N° et Nom :&nbsp;<span id="nameRes"></span></p>
+            <p>Adresse :&nbsp;<span id="addressRes"></span></p>
+            <p id="timerAlert">Expiration dans&nbsp;<span id="timer"></span></p>
+            <button id="cancelReservation">Annuler la réservation</button>
+            <div id="timeUpDiv">
+                <span id="timeUp"></span><button type="button" id="timeUpOk">OK</button>
+            </div>
+    </section>
+
+    <footer>Projet d'étude Javascript chez OpenClassRooms 2020</footer>
+
+    <!-- CARTE JS -->
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <!-- JAVESCRIPT -->
+
+    <!-- <script src="Leaflet/dist/leaflet.markercluster.js"></script> -->
+    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/reservation.js"></script>
+    <script src="assets/js/canvas.js"></script>
+    <script src="assets/js/formEvents.js"></script>
+    <script src="assets/js/map.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

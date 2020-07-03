@@ -1,0 +1,103 @@
+@media all and (max-device-width: 360px) {
+    h1 {
+        font-size: 2em;
+    }
+    .logo1,
+    .logo2 {
+        display: none;
+    }
+    .deco {
+        height: 20em;
+        left: 0;
+    }
+    .deco {
+        padding: 0;
+    }
+    #slideshow,
+    .container {
+        width: 26em;
+        border: none;
+        overflow: hidden;
+    }
+    figure {
+        left: 3em;
+    }
+    #slideshow figure img {
+        height: 400px;
+        width: 350px;
+    }
+    figcaption {
+        width: 18em;
+        bottom: 15em;
+        padding: 0 2em;
+    }
+    .leftNright {
+        position: absolute;
+        display: flex;
+        left: 2.7em;
+        height: 25em;
+        bottom: 4.5em;
+    }
+    #left,
+    #right {
+        padding: 0 8px;
+        font-size: 13px;
+        border-radius: 0;
+        top: 37.7%;
+    }
+    #right {
+        left: 24.6em;
+    }
+    .playNpause {
+        top: 27em;
+        left: 0px;
+    }
+    .carte {
+        flex-direction: column;
+    }
+    #map {
+        width: 30em;
+        height: 40em;
+        position: absolute;
+        margin: 0;
+        top: 9em;
+    }
+    .responsiveAside {
+        display: flex;
+        flex-direction: column;
+        width: 18em;
+        position: relative;
+        top: 2em;
+    }
+    #aside {
+        position: relative;
+        top: 36em;
+        width: 19.5em;
+        height: 27em;
+    }
+    .canvas_block {
+        bottom: 13em;
+    }
+    #canvasWindow {
+        display: flex;
+        flex-direction: column;
+    }
+    #redCross {
+        left: 21em;
+    }
+    #windowReservation {
+        left: 0;
+        width: 19.5em;
+        top: 70em;
+    }
+    h4 {
+        font-size: 1.3em;
+    }
+    #cancelReservation {
+        left: 10%;
+        bottom: 0.8em;
+    }
+    footer {
+        top: 60em;
+    }
+}

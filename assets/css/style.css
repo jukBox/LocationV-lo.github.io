@@ -1,0 +1,680 @@
+body {
+    font-family: cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.titre {
+    background: linear-gradient(to bottom, #defffe, white);
+    display: flow-root;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    color: black;
+    line-height: 0%;
+}
+
+.ecolo {
+    display: flex;
+    justify-content: center;
+}
+
+.f1,
+.f2 {
+    color: green;
+    font-size: 2em;
+}
+
+.f2 {
+    transform: scaleX(-1);
+}
+
+.warning {
+    color: red;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    right: 3em;
+}
+
+.logoFlex {
+    display: flex;
+    position: absolute;
+    left: 4em;
+}
+
+.logo1,
+.logo2 {
+    display: flex;
+    justify-content: space-around;
+    padding: 3em;
+}
+
+.logo2 {
+    position: relative;
+    left: 50em;
+    transform: rotate(0.9turn);
+}
+
+#resDiv,
+#cancelDiv {
+    visibility: hidden;
+    position: absolute;
+    font-size: 2em;
+    bottom: 6em;
+    left: 25%;
+    z-index: 2;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 12px 12px 3px rgba(0, 0, 100, .2);
+    background: linear-gradient(-90deg, #cfe0f2, white);
+    display: grid;
+}
+
+#popupResOk,
+#popupCancelOk {
+    position: relative;
+    top: 0.3em;
+    width: 2em;
+    left: 43%;
+    font-size: 1em;
+    border: 3px black solid;
+    border-radius: 1em;
+    z-index: 2;
+}
+
+.deco {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    padding: 15px;
+    top: 20px;
+    /*cadre gris avec dégradé*/
+    margin: 0 auto 2em;
+    border: 1px solid #ddd;
+    background: #FFF;
+    /* CSS3 effects */
+    background: linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    left: 3em;
+}
+
+.deco:before,
+.deco:after {
+    position: absolute;
+    bottom: 16px;
+    z-index: -10;
+    /*création des ronds ovales avec leirs ombres*/
+    width: 50%;
+    height: 20px;
+    content: " ";
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 20px 10px rgba(0, 0, 0, 0.7);
+}
+
+.deco:before {
+    left: 0;
+    transform: rotate(-4deg);
+    /*inclinaison des ombres des ronds cachées*/
+}
+
+.deco:after {
+    right: 0;
+    transform: rotate(4deg);
+}
+
+
+/* Bloc du Slideshow */
+
+#slideshow {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    padding: 0px;
+    margin: 0px auto;
+    border: 1px solid #3e4654;
+    right: 2px;
+}
+
+#slideshow .container {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+}
+
+#slideshow .slider {
+    position: absolute;
+    display: inline-flex;
+    left: 0;
+    top: 0;
+    width: 400%;
+    height: 400px;
+    -webkit-animation: slider 20s infinite;
+    -moz-animation: slider 20s infinite;
+    animation: slider 20s infinite;
+}
+
+#slideshow figure {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+#slideshow figure img {
+    width: 700px;
+    height: 400px;
+}
+
+figcaption {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 235px;
+    background: whitesmoke;
+    opacity: 0.8;
+}
+
+
+/* début des boutons fléchés */
+
+.leftNright {
+    display: flex;
+    position: relative;
+    bottom: 16.5em;
+    right: 5em;
+    height: 3em;
+}
+
+#left,
+#right {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 17px;
+    border: 0;
+    font-size: 2em;
+    color: #aaa;
+    background-color: #eee;
+    background-image: linear-gradient(#fff, #ddd);
+    text-shadow: 0 0 1px #aaa;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    top: 80%;
+}
+
+#right {
+    left: 23.7em;
+    z-index: 1;
+}
+
+.positionPlayNpause {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 53%;
+}
+
+.playNpause {
+    position: absolute;
+    top: 28.5em;
+    height: 2em;
+    width: 7em;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.7);
+}
+
+.play_commands {
+    cursor: pointer;
+    /* positionnement en haut à droite */
+    position: absolute;
+    top: 0.35em;
+    right: 25px;
+    z-index: 10;
+    /* dimensionnement des icônes */
+    width: 22px;
+    height: 22px;
+    text-indent: -9999px;
+    border: 0 none;
+    /* placez l'opacité à 1 si vous souhaitez voir les commandes */
+    opacity: 1;
+    /* préparation de transition sur opacicty et right */
+    transition: opacity 1s, right 1s;
+}
+
+
+/* on décale play légèrement sur la gauche */
+
+#play {
+    right: 55px;
+}
+
+
+/* création de l'icône pause avec 2 pseudos éléments */
+
+#pause:after,
+#pause:before {
+    position: absolute;
+    display: block;
+    content: " ";
+    top: 0;
+    width: 38%;
+    height: 22px;
+    background: #fff;
+    background: rgba(58, 136, 55, 0.7);
+}
+
+#pause:after {
+    right: 0;
+}
+
+#pause:before {
+    left: 0;
+}
+
+
+/* création de l'icône play avec des bordures */
+
+#play {
+    width: 1px;
+    height: 1px;
+    /* les transparentes forment la flèche */
+    border-top: 10px solid #fff;
+    border-bottom: 10px solid #fff;
+    border-left: 20px solid #fff;
+    border-left: 20px solid rgba(58, 136, 55, 0.7);
+    /* renseignez 1 pour voir l'icône de suite */
+    opacity: 1;
+}
+
+
+/*section carte*/
+
+.responsiveAside {
+    display: flex;
+}
+
+.carte {
+    position: relative;
+    top: 20px;
+    display: flex;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 25px 50px;
+    box-shadow: 0 0 2em green;
+    z-index: 1;
+}
+
+#aside {
+    height: 420px;
+    width: 500px;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 35px 35px 0px 0px;
+    display: none;
+    overflow: hidden;
+    box-shadow: 12px 12px 3px rgba(0, 0, 100, .2);
+    background: linear-gradient(-90deg, #cfe0f2a3, white);
+}
+
+#windowPopup {
+    position: relative;
+    bottom: 40px;
+    visibility: visible;
+}
+
+.coordGroup {
+    position: relative;
+    top: 4em;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+#greenCross,
+#greenCrossRes {
+    position: absolute;
+    top: 5px;
+    background: #BADA55;
+    left: 25em;
+    border-radius: 40% 0%;
+}
+
+#greenCrossRes {
+    left: 54em;
+}
+
+.numNname {
+    position: absolute;
+    bottom: 6em;
+    height: 3em;
+}
+
+.address {
+    position: relative;
+    height: 3em;
+}
+
+.formBlock {
+    opacity: 1;
+    position: relative;
+    top: 6em;
+}
+
+.color {
+    border-bottom: 3px solid #cfd9ffab;
+    border-radius: 7px;
+}
+
+.velo,
+.velo1 {
+    display: flex;
+    padding: 0 1em;
+    margin: 0;
+    position: relative;
+    top: 0.5em;
+}
+
+.formGroupe {
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.formGroupe input {
+    display: block;
+    width: 100%;
+    padding: 5px 0px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 3px solid #aaa;
+    color: #666;
+    font-size: 20px;
+    transition: 0.4s ease-out;
+}
+
+.formGroupe:nth-child(3) {
+    margin-bottom: 65px;
+    justify-content: center;
+}
+
+#btnRes,
+#cancelReservation {
+    display: block;
+    width: auto;
+    padding: 10px 60px;
+    border: 3px solid #8b97d7;
+    border-radius: 999px;
+    background-image: linear-gradient(to right, transparent 50%, #5260ad 50%, #8b97d7);
+    background-size: 200%;
+    color: #8b97d7;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+#btnRes:hover,
+#cancelReservation:hover {
+    color: #fff;
+    background-position: 100%;
+    border: 3px solid #fff;
+}
+
+.liensForm {
+    position: relative;
+    bottom: 3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+#lienRes {
+    visibility: hidden;
+    font-size: 1em;
+    font-family: cursive, sans-serif;
+    border: 2px solid;
+    border-radius: 999px;
+    background: none;
+    animation: colorchange 2s linear 1s infinite;
+}
+
+@keyframes colorchange {
+    0% {
+        color: red;
+        color: cyan;
+    }
+    33% {
+        color: green;
+        color: magenta;
+    }
+    66% {
+        color: blue;
+        color: yellow;
+    }
+    100% {
+        color: red;
+        color: cyan;
+    }
+}
+
+@-webkit-keyframes colorchange
+/* Safari and Chrome - necessary duplicate */
+
+{
+    0% {
+        color: red;
+        color: cyan;
+    }
+    33% {
+        color: green;
+        color: magenta;
+    }
+    66% {
+        color: blue;
+        color: yellow;
+    }
+    100% {
+        color: red;
+        color: cyan;
+    }
+}
+
+#canvasWindow {
+    visibility: hidden;
+    display: grid;
+}
+
+.canvas_block {
+    position: relative;
+    bottom: 11em;
+}
+
+#redCross {
+    position: relative;
+    background: #ff5733;
+    left: 24em;
+    float: right;
+    border-radius: 40% 0%;
+    height: 25px;
+    width: 30px;
+    top: 2em;
+}
+
+#canvas {
+    background: rgba(100, 150, 200, 0.2);
+}
+
+#canvasEmpty {
+    display: none;
+}
+
+.btns {
+    position: relative;
+    top: 10px;
+}
+
+#eraseCanvas {
+    position: relative;
+    left: 15%;
+    border-radius: 50% 0% / 50% 0%;
+    padding: 10px;
+    background: #ffcf51;
+}
+
+#validCanvas {
+    position: relative;
+    left: 45%;
+    border-radius: 0% 50% / 0% 50%;
+    padding: 10px;
+    background: #27d2c2;
+}
+
+#windowReservation {
+    height: 20em;
+    width: 45em;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: 0 20px;
+    display: none;
+    overflow: hidden;
+    box-shadow: 12px 12px 3px rgba(0, 0, 100, .2);
+    background: linear-gradient(-90deg, #cfe0f2a3, white);
+    top: 35em;
+    text-align: center;
+    position: absolute;
+    left: 30%;
+}
+
+h4 {
+    margin: 0;
+    font-size: 2em;
+    animation: colorchange 2s linear 1s infinite;
+}
+
+@keyframes colorchange {
+    0% {
+        color: red;
+        color: cyan;
+    }
+    33% {
+        color: green;
+        color: magenta;
+    }
+    66% {
+        color: blue;
+        color: yellow;
+    }
+    100% {
+        color: red;
+        color: cyan;
+    }
+}
+
+@-webkit-keyframes colorchange
+/* Safari and Chrome - necessary duplicate */
+
+{
+    0% {
+        color: red;
+        color: cyan;
+    }
+    33% {
+        color: green;
+        color: magenta;
+    }
+    66% {
+        color: blue;
+        color: yellow;
+    }
+    100% {
+        color: red;
+        color: cyan;
+    }
+}
+
+#bikeValid {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    background: radial-gradient(at 50% 50%, #74c214, white 80%);
+    border-radius: 150px 150px 150px 150px / 12px 12px 12px 12px;
+    position: relative;
+}
+
+#timerAlert {
+    visibility: hidden;
+    position: relative;
+    text-align: center;
+    bottom: 0.2em;
+}
+
+#cancelReservation {
+    position: relative;
+    left: 34%;
+    padding: 5px 15px;
+}
+
+#timer {
+    position: relative;
+    height: 50px;
+    width: 200px;
+    color: #ff5733;
+}
+
+#timeUpDiv {
+    height: 6em;
+    width: 35em;
+    border: 3px black solid;
+    border-radius: 10px;
+    box-shadow: 12px 12px 3px rgba(0, 0, 100, .2);
+    background: red;
+    top: 1em;
+    text-align: center;
+    position: absolute;
+    left: 12%;
+    visibility: hidden;
+}
+
+#timeUp {
+    position: relative;
+    font-size: 1.5em;
+    color: white;
+}
+
+#timeUpOk {
+    position: relative;
+    top: 0.5em;
+    font-size: 1.5em;
+    border: 3px black solid;
+    border-radius: 1em;
+}
+
+
+/*----------FOOTER----------*/
+
+footer {
+    position: relative;
+    top: 24em;
+    background-color: #F7F7F7;
+    font-weight: bold;
+    text-align: center;
+    padding: 2.5em;
+}
