@@ -1,20 +1,15 @@
 class Slider {
     constructor() {
-        this.left = document.getElementById("left");
-        this.right = document.getElementById("right");
-        this.pause = document.getElementById("pause");
-        this.play = document.getElementById("play");
-        this.images = ["assets/images/1.png", "assets/images/2.png", "assets/images/3.png", "assets/images/4.png"];
-        this.img = document.getElementById("img");
-        this.comment = document.getElementById("comment");
-        this.figcaption = ["Comment réserver? Regardez le tuto en images ici!", "Etape 1/3 : Choisir une station", "Etape 2/3 : Remplir le formulaire", "Etape 3/3 : Signer et valider"];
-        this.playing = true;
-        this.number = 0;
+        this.number_slide = 0;
+        this.initEvents();
+    };
+
+    initEvents() {
         this.imageRight();
         this.imageLeft();
         this.keybord();
         this.slideAuto();
-    };
+    }
 
     keybord() {
         document.addEventListener('keydown', function(event) {
@@ -27,39 +22,51 @@ class Slider {
     };
 
     imageRight() {
-        this.right.addEventListener('click', function(event) {
+        let right_btn = document.getElementById("right");
+
+        right_btn.addEventListener('click', function(event) {
             this.changeSlide(1);
         }.bind(this));
     };
 
     imageLeft() {
-        this.left.addEventListener('click', function(event) {
+        let left_btn = document.getElementById("left");
+
+        left_btn.addEventListener('click', function(event) {
             this.changeSlide(-1);
         }.bind(this));
     };
 
     changeSlide(sens) {
-        this.number = this.number + sens;
+        let images = ["assets/images/1.png", "assets/images/2.png", "assets/images/3.png", "assets/images/4.png"];
+        let figcaption = ["Comment réserver? Regardez le tuto en images ici!", "Etape 1/3 : Choisir une station", "Etape 2/3 : Remplir le formulaire", "Etape 3/3 : Signer et valider"];
+        let img_slide = document.getElementById("img");
+        let tuto_img = document.getElementById("tuto_img");
 
-        if (this.number < 0) {
-            this.number = this.images.length - 1;
-            this.number = this.figcaption.length - 1;
+        this.number_slide = this.number_slide + sens;
+
+        if (this.number_slide < 0) {
+            this.number_slide = images.length - 1;
+            this.number_slide = figcaption.length - 1;
         };
-        if (this.number > this.images.length - 1 && this.number > this.figcaption.length - 1) {
-            this.number = 0;
+        if (this.number_slide > images.length - 1 && this.number_slide > figcaption.length - 1) {
+            this.number_slide = 0;
         };
-        this.img.src = this.images[this.number];
-        this.comment.innerHTML = this.figcaption[this.number];
+        img_slide.src = images[this.number_slide];
+        tuto_img.innerHTML = figcaption[this.number_slide];
     };
 
     slideAuto() {
+        let isPlaying = true;
+        let pause_btn = document.getElementById("pause");
+        let play_btn = document.getElementById("play");
 
         let loop = setInterval(() => {
-            if (this.playing === true) {
+            if (isPlaying === true) {
 
                 this.changeSlide(1);
 
-            } else(this.playing === false)
+            } else(isPlaying === false)
 
             this.vitesse = null;
             this.changeSlide(0);
@@ -67,12 +74,12 @@ class Slider {
 
         }, 5000);
 
-        this.play.addEventListener('click', event => {
-            this.playing = true;
+        play_btn.addEventListener('click', event => {
+            isPlaying = true;
         });
 
-        this.pause.addEventListener('click', event => {
-            this.playing = false;
+        pause_btn.addEventListener('click', event => {
+            isPlaying = false;
             clearInterval(this.loop);
         });
     };

@@ -1,76 +1,77 @@
 class FormEvents {
     constructor() {
-        this.btnRes = document.getElementById("btnRes");
-        this.nom = document.getElementById('nom');
-        this.prenom = document.getElementById('prenom');
-        this.nomForm = document.getElementById("nomForm");
-        this.prenomForm = document.getElementById("prenomForm");
-        this.greenCross = document.getElementById('greenCross');
-        this.redCross = document.getElementById("redCross");
-        this.canvasWindow = document.getElementById("canvasWindow");
-        this.aside = document.getElementById('aside');
-        this.form = document.getElementById("form");
-        this.resDiv = document.getElementById('resDiv');
-        this.popupRes = document.getElementById('popupRes');
-        this.windowReservation = document.getElementById('windowReservation');
-        this.timeUpDiv = document.getElementById('timeUpDiv');
-        this.timeUpOk = document.getElementById('timeUpOk');
         this.afficherBlock();
         this.timeUpRes();
     };
 
     afficherBlock() {
+        const nom = document.getElementById('nom');
+        const prenom = document.getElementById('prenom');
+        const greenCross = document.getElementById('greenCross');
+        const redCross = document.getElementById("redCross");
+        const canvasWindow = document.getElementById("canvasWindow");
+        const aside = document.getElementById('aside');
+        const form = document.getElementById("form");
+        const resDiv = document.getElementById('resDiv');
+        const popupRes = document.getElementById('popupRes');
+        const btnRes = document.getElementById("btnRes");
+        const nomForm = document.getElementById("nomForm");
+        const prenomForm = document.getElementById("prenomForm");
+        const lienRes = document.getElementById("lienRes");
 
-        this.btnRes.addEventListener('click', event => {
-            localStorage.setItem('nom', this.nom.value);
-            localStorage.setItem('prenom', this.prenom.value);
-            this.nomForm.innerHTML = this.nom.value;
-            this.prenomForm.innerHTML = this.prenom.value;
+        btnRes.addEventListener('click', event => {
+            localStorage.setItem('nom', nom.value);
+            localStorage.setItem('prenom', prenom.value);
+            nomForm.innerHTML = nom.value;
+            prenomForm.innerHTML = prenom.value;
 
-            if (this.nom.value !== "" && this.prenom.value !== "" && sessionStorage.station === undefined && sessionStorage.adresse === undefined) {
+            if (nom.value !== "" && prenom.value !== "" && sessionStorage.station === undefined && sessionStorage.adresse === undefined) {
 
-                this.canvasWindow.style.visibility = "visible";
-                this.form.style.visibility = "hidden";
+                canvasWindow.style.visibility = "visible";
+                form.style.visibility = "hidden";
             };
 
-            if (this.nom.value === "") {
+            if (nom.value === "") {
 
-                this.nom.placeholder = "Veuillez renseigner votre nom";
-                this.nom.innerHTML = this.nom.placeholder;
+                nom.placeholder = "Veuillez renseigner votre nom";
+                nom.innerHTML = nom.placeholder;
             };
 
-            if (this.prenom.value === "") {
+            if (prenom.value === "") {
 
-                this.prenom.placeholder = "Veuillez renseigner votre prénom";
-                this.prenom.innerHTML = this.prenom.placeholder;
+                prenom.placeholder = "Veuillez renseigner votre prénom";
+                prenom.innerHTML = prenom.placeholder;
             };
 
-            if (this.nom.value !== "" && this.prenom.value !== "" && sessionStorage.station !== undefined && sessionStorage.adresse !== undefined) {
+            if (nom.value !== "" && prenom.value !== "" && sessionStorage.station !== undefined && sessionStorage.adresse !== undefined) {
 
-                this.popupRes.innerHTML = "Veuillez annuler votre réservation pour en commander une autre";
-                this.resDiv.style.visibility = "visible";
-                console.log("test");
+                popupRes.innerHTML = "Veuillez annuler votre réservation pour en commander une autre";
+                resDiv.style.visibility = "visible";
+                lienRes.style.visibility = "visible";
             };
         });
 
-        this.greenCross.addEventListener("click", function(event) {
+        greenCross.addEventListener("click", function(event) {
 
-            this.aside.style.display = "none";
-        }.bind(this));
+            aside.style.display = "none";
+        });
 
-        this.redCross.addEventListener('click', event => {
+        redCross.addEventListener('click', event => {
 
-            this.canvasWindow.style.visibility = "hidden";
-            this.form.style.visibility = "visible";
+            canvasWindow.style.visibility = "hidden";
+            form.style.visibility = "visible";
         });
     };
 
     timeUpRes() {
+        const windowReservation = document.getElementById('windowReservation');
+        const timeUpDiv = document.getElementById('timeUpDiv');
+        const timeUpOk = document.getElementById('timeUpOk');
 
-        this.timeUpOk.addEventListener("click", function(event) {
+        timeUpOk.addEventListener("click", function(event) {
 
-            this.timeUpDiv.style.visibility = "hidden";
-            this.windowReservation.style.display = "none";
-        }.bind(this));
+            timeUpDiv.style.visibility = "hidden";
+            windowReservation.style.display = "none";
+        });
     };
 };

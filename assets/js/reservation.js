@@ -1,122 +1,106 @@
 class Reservation {
 
     constructor() {
-        this.valid = document.getElementById('validCanvas');
         this.timer = document.getElementById('timer');
-        this.timerAlert = document.getElementById('timerAlert');
-        this.windowPopup = document.getElementById('windowPopup');
         this.windowReservation = document.getElementById('windowReservation');
         this.form = document.getElementById("form");
-        this.lienRes = document.getElementById("lienRes");
-        this.cancelReservation = document.getElementById("cancelReservation");
-        this.resDiv = document.getElementById('resDiv');
-        this.popupRes = document.getElementById('popupRes');
-        this.popupResOk = document.getElementById('popupResOk');
-        this.timeUpDiv = document.getElementById('timeUpDiv');
-        this.timeUp = document.getElementById('timeUp');
-        this.timeUpOk = document.getElementById('timeUpOk');
         this.canvas = document.getElementById("canvas");
         this.canvasEmpty = document.getElementById("canvasEmpty");
-        this.ctx = this.canvas.getContext("2d");
-        this.veloSelector = document.getElementById('velo');
-        this.bikeValid = document.getElementById("bikeValid");
         this.canvasWindow = document.getElementById("canvasWindow");
-        this.addressSelector = document.getElementById('address');
-        this.nameSelector = document.getElementById('name');
-        this.greenCrossRes = document.getElementById('greenCrossRes');
-        this.nameRes = document.getElementById("nameRes");
-        this.addressRes = document.getElementById("addressRes");
-        this.chronoValid = false;
         this.init();
     };
 
-    chrono() {
-        let counter = 20;
-        let time = counter * 60;
+    init() {
+        const valid = document.getElementById('validCanvas');
+        const windowPopup = document.getElementById('windowPopup');
+        const lienRes = document.getElementById("lienRes");
+        const resDiv = document.getElementById('resDiv');
+        const popupRes = document.getElementById('popupRes');
+        const addressSelector = document.getElementById('address');
+        const nameSelector = document.getElementById('name');
+        const popupResOk = document.getElementById('popupResOk');
+        const greenCrossRes = document.getElementById('greenCrossRes');
+        const nameRes = document.getElementById("nameRes");
+        const addressRes = document.getElementById("addressRes");
+        const nom = document.getElementById('nom');
+        const prenom = document.getElementById('prenom');
+        const nomForm = document.getElementById("nomForm");
+        const prenomForm = document.getElementById("prenomForm");
 
-        let toLate = setInterval(() => {
-            let minutes = Math.floor(time / 60);
-            let seconds = time % 60;
+        window.addEventListener("load", function() {
 
-            seconds = seconds < 10 ? '0' + seconds : seconds;
+            if (localStorage.minutes && localStorage.seconds) {
+                lienRes.style.visibility = "visible";
+                nameRes.innerHTML = sessionStorage.getItem('station');
+                addressRes.innerHTML = sessionStorage.getItem('adresse');
+                localStorage.getItem('nom', nom.value);
+                localStorage.getItem('prenom', prenom.value);
+                nomForm.innerHTML = nom.value;
+                prenomForm.innerHTML = prenom.value;
+                this.data_window();
+                this.data_storage();
+            }
+        }.bind(this));
 
-            this.timer.innerHTML = `${minutes} min et ${seconds} sec`;
+        valid.addEventListener('click', event => {
 
-            if (time > 0) {
-                time--;
-                this.chronoValid = true;
-            } else {
-                this.timeUp.innerHTML = "Délai dépassé, votre réservation est annulée :(";
-                this.timeUpDiv.style.visibility = "visible";
-                clearInterval(toLate);
-                sessionStorage.clear();
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                this.lienRes.style.visibility = "hidden";
-                this.chronoValid = false;
+            if (this.canvas.toDataURL() === this.canvasEmpty.toDataURL()) {
+
+                popupRes.innerHTML = "Veuillez signer pour valider";
+                resDiv.style.visibility = "visible";
+                return;
             };
-        }, 1000);
 
-        this.cancelReservation.addEventListener("click", event => {
+            sessionStorage.setItem('station', nameSelector.textContent);
+            sessionStorage.setItem('adresse', addressSelector.textContent);
+            nameRes.innerHTML = nameSelector.textContent;
+            addressRes.innerHTML = addressSelector.textContent;
+            this.data_window();
+            let timer = new Timer(1201000);
+            timer.chrono();
 
-            clearInterval(toLate);
-            sessionStorage.clear();
-            this.chronoValid = false;
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        });
+
+        popupResOk.addEventListener('click', event => {
+
+            resDiv.style.visibility = "hidden";
+        });
+
+        greenCrossRes.addEventListener("click", function(event) {
+
+            canvasWindow.style.visibility = "hidden";
             this.windowReservation.style.display = "none";
-            this.windowPopup.style.visibility = "visible";
+            windowPopup.style.visibility = "visible";
             this.form.style.visibility = "visible";
-            this.lienRes.style.visibility = "hidden";
-            this.popupRes.innerHTML = "Vous avez annulé votre réservation";
-            this.resDiv.style.visibility = "visible";
+            lienRes.style.visibility = "visible";
+        }.bind(this));
+
+        lienRes.addEventListener("click", event => {
+
+            this.windowReservation.style.display = "block";
         });
     };
 
-    init() {
+    data_window() {
+        const veloSelector = document.getElementById('velo');
+        const timerAlert = document.getElementById('timerAlert');
+        const bikeValid = document.getElementById("bikeValid");
 
-        this.valid.addEventListener('click', event => {
+        veloSelector.innerHTML = "1";
+        timerAlert.style.visibility = "visible";
+        bikeValid.style.visibility = "visible";
+        this.form.style.visibility = "visible";
+        this.canvasWindow.style.visibility = "hidden";
+        this.windowReservation.style.display = "block";
+    }
 
-            if (this.canvas.toDataURL() == this.canvasEmpty.toDataURL()) {
+    data_storage() {
 
-                this.popupRes.innerHTML = "Veuillez signer pour valider";
-                this.resDiv.style.visibility = "visible";
+        let minutes = localStorage.getItem('minutes');
+        let seconds = localStorage.getItem('seconds');
 
-            } else if (this.chronoValid === false && this.canvas.toDataURL() != this.canvasEmpty.toDataURL()) {
-
-                sessionStorage.setItem('station', this.nameSelector.textContent);
-                sessionStorage.setItem('adresse', this.addressSelector.textContent);
-                this.nameRes.innerHTML = this.nameSelector.textContent;
-                this.addressRes.innerHTML = this.addressSelector.textContent;
-                this.chrono();
-                this.timerAlert.style.visibility = "visible";
-                this.canvasWindow.style.visibility = "hidden";
-                this.windowReservation.style.display = "block";
-                this.form.style.visibility = "visible";
-                this.bikeValid.style.visibility = "visible";
-                this.veloSelector.innerHTML = "1";
-
-            } else {
-                console.log("no valid");
-            };
-        });
-
-        this.popupResOk.addEventListener('click', event => {
-            this.resDiv.style.visibility = "hidden";
-        });
-
-        this.greenCrossRes.addEventListener("click", function(event) {
-            canvasWindow.style.visibility = "hidden";
-            this.windowReservation.style.display = "none";
-            this.windowPopup.style.visibility = "visible";
-            this.form.style.visibility = "visible";
-            this.lienRes.style.visibility = "visible";
-        }.bind(this));
-
-        this.lienRes.addEventListener("click", event => {
-            this.windowReservation.style.display = "block";
-        });
-
-        // if ( ) {
-
-        // };
+        let reste = minutes * 60 * 1000 + seconds * 1000;
+        let timer = new Timer(reste);
+        timer.chrono();
     };
 };

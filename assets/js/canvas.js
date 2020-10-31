@@ -2,17 +2,16 @@ class Canvas {
     constructor() {
         this.canvas = document.getElementById("canvas");
         this.ctx = this.canvas.getContext("2d");
-        this.erase = document.getElementById("eraseCanvas");
-        this.form = document.getElementById("form");
         this.mousePosition = { x: 0, y: 0 };
         this.canvas.width = 360;
         this.canvas.height = 150;
         this.isDrawing = false;
-        this.dessiner();
-        this.effacer();
+        this.isTouch()
+        this.isDraw();
+        this.rase_draw();
     };
 
-    dessiner() {
+    isDraw() {
         this.canvas.addEventListener('mousedown', event => {
             let rect = this.canvas.getBoundingClientRect();
 
@@ -50,8 +49,10 @@ class Canvas {
             context.stroke();
     };
 
-    effacer() {
-        this.erase.addEventListener('click', event => {
+    rase_draw() {
+        let erase = document.getElementById("eraseCanvas");
+
+        erase.addEventListener('click', event => {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         });
     };

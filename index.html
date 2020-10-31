@@ -8,16 +8,14 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/smartphone.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
 
     <!-- LIBRAIRE -->
-    <script src="https://kit.fontawesome.com/e0a08b6ff2.js"></script>
+    <script src="https://kit.fontawesome.com/e0a08b6ff2.js" defer></script>
 
-    <!-- CARTE CSS -->
+    <!-- CSS MAP -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
-    <link type="text/css" rel="stylesheet" href="Leaflet/dist/MarkerCluster.css" />
-    <link type="text/css" rel="stylesheet" href="Leaflet/dist/MarkerCluster.Default.css" />
 
     <title>Carte interactive</title>
 </head>
@@ -30,21 +28,15 @@
     </div>
 
     <div class="logo">
-        <div class="logoFlex">
-            <img class="logo1" src="assets/images/logo_velo.gif" alt="logo vélo">
-            <img class="logo2" src="assets/images/logo_velo.gif" alt="logo vélo">
-        </div>
 
         <div class="deco">
-
             <div id="slideshow">
-
                 <div class="container">
                     <div class="slider">
                         <figure>
                             <img id="img" src="assets/images/1.png" alt="Image 1" />
                             <figcaption>
-                                <h3 id="comment">Comment réserver? Regardez le tuto en images ici!</h3>
+                                <h3 id="tuto_img">Comment réserver? Regardez le tuto en images ici!</h3>
                             </figcaption>
                         </figure>
                     </div>
@@ -63,20 +55,17 @@
                 <button id="play" class="play_commands">Play</button>
             </div>
         </div>
-
     </div>
 
     <section class="carte">
-
         <div id="resDiv">
             <span id="popupRes"></span><button id="popupResOk" type="button">OK</button>
         </div>
+
         <div id="map"></div>
 
         <aside id="aside">
-
             <div id="windowPopup">
-
                 <button id="greenCross" type="button">X</button>
                 <h2><span id="status"></span></h2>
                 <div class="coordGroup">
@@ -132,6 +121,7 @@
             <div id="timeUpDiv">
                 <span id="timeUp"></span><button type="button" id="timeUpOk">OK</button>
             </div>
+        </div>
     </section>
 
     <footer>Projet d'étude Javascript chez OpenClassRooms 2020</footer>
@@ -139,10 +129,10 @@
     <!-- CARTE JS -->
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <!-- JAVESCRIPT -->
 
-    <!-- <script src="Leaflet/dist/leaflet.markercluster.js"></script> -->
+    <!-- JAVASCRIPT -->
     <script src="assets/js/slider.js"></script>
+    <script src="assets/js/timer.js"></script>
     <script src="assets/js/reservation.js"></script>
     <script src="assets/js/canvas.js"></script>
     <script src="assets/js/formEvents.js"></script>

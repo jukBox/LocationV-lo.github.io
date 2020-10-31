@@ -1,6 +1,6 @@
 class Map {
     constructor(mapContainer) {
-        this.jcDecauxApiUrl = 'https://api.jcdecaux.com/vls/v1/stations?contract=lyon&apiKey=df9fc65114cc5552acd0c736edc5e25448cf4e35';
+        this.jcDecauxApiUrl = 'https://api.jcdecaux.com/vls/v1/stations?contract=lyon&apiKey=df9fc65114cc5552acd0c736edc5e25448cf4e35'; // A mettre dans un fichier de config
         this.mapContainer = mapContainer;
         this.map = null;
 
@@ -69,10 +69,12 @@ class Map {
                 if (parsedStations[i].status === "OPEN") {
                     document.getElementById('status').innerHTML = "Station ouverte";
                     document.getElementById('status').style.color = "#74c214";
+                    document.getElementById('form').style.visibility = "visible";
 
                 } else if (parsedStations[i].status === "CLOSED") {
                     document.getElementById('status').innerHTML = "Station fermée";
                     document.getElementById('status').style.color = "#ff5733";
+                    document.getElementById('form').style.visibility = "hidden";
                 };
 
                 if (parsedStations[i].address === "") {

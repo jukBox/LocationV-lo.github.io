@@ -2,22 +2,24 @@
     h1 {
         font-size: 2em;
     }
-    .logo1,
-    .logo2 {
-        display: none;
+    .logo {
+        right: 2em;
+    }
+    #resDiv,
+    #cancelDiv {
+        left: 0;
     }
     .deco {
         height: 20em;
         left: 0;
-    }
-    .deco {
         padding: 0;
     }
     #slideshow,
     .container {
-        width: 26em;
+        width: 23.5em;
         border: none;
         overflow: hidden;
+        right: 0.3em;
     }
     figure {
         left: 3em;
@@ -27,14 +29,14 @@
         width: 350px;
     }
     figcaption {
-        width: 18em;
+        width: 17em;
         bottom: 15em;
         padding: 0 2em;
     }
     .leftNright {
         position: absolute;
         display: flex;
-        left: 2.7em;
+        left: 1.6em;
         height: 25em;
         bottom: 4.5em;
     }
@@ -71,9 +73,12 @@
     }
     #aside {
         position: relative;
-        top: 36em;
+        top: 6em;
         width: 19.5em;
-        height: 27em;
+        height: 30em;
+    }
+    #greenCross {
+        left: 22.5em;
     }
     .canvas_block {
         bottom: 13em;
@@ -88,7 +93,12 @@
     #windowReservation {
         left: 0;
         width: 19.5em;
-        top: 70em;
+        height: auto;
+        top: 41em;
+        background-color: white;
+    }
+    #greenCrossRes {
+        left: 24em;
     }
     h4 {
         font-size: 1.3em;
@@ -97,7 +107,10 @@
         left: 10%;
         bottom: 0.8em;
     }
+    #timeUpDiv {
+        width: 19em;
+    }
     footer {
-        top: 60em;
+        top: 10em;
     }
 }
