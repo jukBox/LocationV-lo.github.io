@@ -6,7 +6,6 @@ class Canvas {
         this.canvas.width = 360;
         this.canvas.height = 150;
         this.isDrawing = false;
-        this.isTouch()
         this.isDraw();
         this.rase_draw();
     };
