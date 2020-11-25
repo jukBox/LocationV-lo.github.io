@@ -1,6 +1,6 @@
 class Map {
     constructor(mapContainer) {
-        this.jcDecauxApiUrl = 'https://api.jcdecaux.com/vls/v1/stations?contract=lyon&apiKey=df9fc65114cc5552acd0c736edc5e25448cf4e35'; // A mettre dans un fichier de config
+        this.jcDecauxApiUrl = 'https://api.jcdecaux.com/vls/v1/stations?contract=lyon&apiKey=df9fc65114cc5552acd0c736edc5e25448cf4e35';
         this.mapContainer = mapContainer;
         this.map = null;
 

@@ -1,4 +1,10 @@
 @media all and (max-device-width: 360px) {
+    canvas {
+        touch-action: none;
+        width: 115%;
+        position: relative;
+        right: 10%;
+    }
     h1 {
         font-size: 2em;
     }
